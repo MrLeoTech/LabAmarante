@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <title>LeoSuite LabAmarante — Guião comercial e demonstração</title>
+  <style>
+    @page { size: A4; margin: 12mm 11mm; }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", Calibri, system-ui, sans-serif;
+      color: #0f172a;
+      line-height: 1.32;
+      font-size: 9.2pt;
+      margin: 0;
+    }
+    .head {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      border-bottom: 3px solid #0f766e;
+      padding-bottom: 7px;
+      margin-bottom: 8px;
+    }
+    .brand {
+      color: #0f766e;
+      font-weight: 700;
+      font-size: 8pt;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin: 0 0 2px;
+    }
+    h1 {
+      font-size: 13.5pt;
+      color: #134e4a;
+      margin: 0 0 2px;
+      line-height: 1.15;
+    }
+    .meta { color: #64748b; font-size: 8pt; margin: 0; }
+    .badge {
+      text-align: right;
+      font-size: 8.2pt;
+      color: #334155;
+      min-width: 140px;
+    }
+    .badge strong { display: block; color: #0f766e; font-size: 9.5pt; }
+    h2 {
+      font-size: 10.2pt;
+      color: #0f766e;
+      margin: 8px 0 4px;
+      padding-bottom: 1px;
+      border-bottom: 1px solid #99f6e4;
+      page-break-after: avoid;
+    }
+    h3 {
+      font-size: 9.2pt;
+      color: #115e59;
+      margin: 6px 0 2px;
+      page-break-after: avoid;
+    }
+    p { margin: 0 0 4px; }
+    ul, ol { margin: 0 0 5px; padding-left: 15px; }
+    li { margin: 0 0 2px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8.3pt;
+      margin: 3px 0 6px;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 3px 5px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #f0fdfa; color: #134e4a; }
+    .box {
+      background: #f0fdfa;
+      border: 1px solid #99f6e4;
+      border-radius: 7px;
+      padding: 6px 8px;
+      margin: 5px 0;
+    }
+    .warn {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 7px;
+      padding: 6px 8px;
+      margin: 5px 0;
+    }
+    .quote {
+      font-style: italic;
+      color: #115e59;
+      border-left: 3px solid #14b8a6;
+      padding-left: 8px;
+      margin: 4px 0 6px;
+    }
+    .grid2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      margin: 4px 0;
+    }
+    .card {
+      border: 1px solid #e2e8f0;
+      border-radius: 7px;
+      padding: 6px 7px;
+      background: #f8fafc;
+    }
+    .card h3 { margin: 0 0 2px; }
+    .small { font-size: 7.8pt; color: #64748b; }
+    .page2 { page-break-before: always; }
+    .footer {
+      margin-top: 6px;
+      padding-top: 4px;
+      border-top: 1px solid #e2e8f0;
+      font-size: 7.5pt;
+      color: #64748b;
+    }
+    .step { font-weight: 700; color: #0f766e; }
+  </style>
+</head>
+<body>
+
+  <!-- PÁGINA 1 -->
+  <div class="head">
+    <div>
+      <p class="brand">Mr Leo Tech · Uso interno</p>
+      <h1>Guião comercial + demonstração · LabAmarante</h1>
+      <p class="meta">Cliente: LabAmarante, Lda · João Matias · Escala: Sandra Coelho · Ago 2026</p>
+    </div>
+    <div class="badge">
+      <strong>Opção B · 2.890 € + 399 €/ano</strong>
+      Objectivo: fechar aceite<br />Documento confidencial
+    </div>
+  </div>
+
+  <div class="box">
+    <strong>Objectivo da reunião:</strong> mostrar que o LeoSuite resolve o Excel (~2 h/semana),
+    validar a Opção B e pedir decisão: avançar com desenvolvimento + alojamento.
+  </div>
+
+  <h2>1. Checklist antes de saíres</h2>
+  <ul>
+    <li>Build feito · pasta <code>dist</code> no Netlify Drop · link nos favoritos do <strong>tablet/iPhone</strong></li>
+    <li>Testar no <strong>mesmo aparelho</strong> da reunião (dados não sincronizam entre PC e telemóvel)</li>
+    <li>Levar: proposta comercial + PDF cliente (2 pág.) + este guião</li>
+    <li>Se falhar algo: Dashboard → <strong>Reset demo</strong></li>
+  </ul>
+  <div class="warn">
+    <strong>Apresenta no tablet/telemóvel com o link Netlify.</strong> O PC fixo fica em casa.
+  </div>
+
+  <h2>2. Pacote a fechar</h2>
+  <table>
+    <tr><th>Item</th><th>Valor s/ IVA</th><th>Como dizer</th></tr>
+    <tr><td>Desenvolvimento B</td><td><strong>2.890 €</strong></td><td>40% arranque · 40% V1 · 20% validação</td></tr>
+    <tr><td>Alojamento anual</td><td><strong>399 €/ano</strong></td><td>Recomendado (~2 meses de poupança vs mensal)</td></tr>
+    <tr><td>Alojamento mensal</td><td>39,90 €/mês</td><td>Só se preferirem mensalidade</td></tr>
+    <tr><td>Manutenção opcional</td><td>49 €/mês</td><td>Não insistir; só se perguntarem</td></tr>
+    <tr><td>Prazo</td><td>3–5 semanas</td><td>Após Excel real + aceite</td></tr>
+  </table>
+
+  <h2>3. Abertura (1–2 min)</h2>
+  <div class="quote">
+    “Hoje a Sandra gasta cerca de 2 horas por semana no Excel com 11 locais.
+    O LeoSuite faz a escala com regras — quem pode ir a que posto, quem não pode trabalhar junto —
+    e a equipa consulta no telemóvel, sem WhatsApp solto.”
+  </div>
+  <div class="quote">
+    “Isto é um protótipo da Opção B. Ainda não tem a vossa folha real, mas mostra exactamente
+    o funcionamento que entregamos em 3 a 5 semanas.”
+  </div>
+
+  <h2>4. Guião da demo (~10–12 min)</h2>
+  <ol>
+    <li><span class="step">Dashboard (1 min)</span> — postos, pedidos, alertas. “Num ecrã o que hoje está espalhado.”</li>
+    <li><span class="step">Escalas → Grelha (3 min) ★</span> — vermelho = falha cobertura; adicionar/remover; <strong>Exportar Excel</strong>.</li>
+    <li><span class="step">Incompatibilidades (3 min) ★</span> — pessoa↔pessoa (Joana+Pedro); pessoa↔posto (Ana↛Mondim); voltar à Escala e forçar bloqueio. Mencionar Competências = funções.</li>
+    <li><span class="step">Controlo total (1 min)</span> — Postos/Equipa/Férias adicionar-apagar. “Não dependem do informático.”</li>
+    <li><span class="step">Portal (2 min) ★</span> — escala no telemóvel; pedir folga; aprovar em Férias.</li>
+    <li><span class="step">Fecho (1 min)</span> — preço + prazo + pergunta de decisão (ver pág. 2).</li>
+  </ol>
+
+  <!-- PÁGINA 2 -->
+  <div class="page2">
+    <div class="head">
+      <div>
+        <p class="brand">Mr Leo Tech · Uso interno</p>
+        <h1>Fecho, objeções e próximos passos</h1>
+        <p class="meta">LabAmarante · Guião comercial + demo · Página 2/2</p>
+      </div>
+      <div class="badge">
+        <strong>Pergunta de decisão</strong>
+        “Querem avançar com o arranque?”
+      </div>
+    </div>
+
+    <h2>5. Frase de fecho (decorar)</h2>
+    <div class="box">
+      <div class="quote" style="border:0;margin:0;padding:0">
+        “Isto é a Opção B: 2.890 € de desenvolvimento + 399 €/ano de alojamento.
+        Em 3–5 semanas carregamos a vossa folha real e a Sandra deixa o Excel.
+        Querem avançar com o arranque?”
+      </div>
+    </div>
+
+    <h2>6. Respostas rápidas</h2>
+    <table>
+      <tr><th>Eles dizem</th><th>Tu dizes</th></tr>
+      <tr>
+        <td>“Os dados não são os nossos”</td>
+        <td>“Exacto — é demo. No arranque carregamos 1 semana real do Excel e a lista de colaboradores.”</td>
+      </tr>
+      <tr>
+        <td>“Parece só uma app”</td>
+        <td>“É o vosso processo de escala, com regras e telemóvel — o Excel deixa de ser onde a informação vive.”</td>
+      </tr>
+      <tr>
+        <td>“E se precisarmos de mudar regras?”</td>
+        <td>“Adicionam e apagam postos, pessoas, competências e incompatibilidades sem nos chamar.”</td>
+      </tr>
+      <tr>
+        <td>“Porque há valor anual?”</td>
+        <td>“Desenvolvimento constrói; alojamento é a cloud segura para toda a equipa aceder ao mesmo tempo.”</td>
+      </tr>
+      <tr>
+        <td>“É caro?”</td>
+        <td>“2 h/semana × 52 ≈ 100 h/ano da Sandra. A B paga-se em poucas semanas de tempo recuperado.”</td>
+      </tr>
+      <tr>
+        <td>“Queremos a A”</td>
+        <td>“A arranca, mas sem portal nem férias/HE na app. O que mais dói (WhatsApp+Excel) é o que a B resolve.”</td>
+      </tr>
+      <tr>
+        <td>“E a C?”</td>
+        <td>“Mais completa depois. Se a B fechar bem, evoluímos — sem obrigar a C agora.”</td>
+      </tr>
+      <tr>
+        <td>Pedem RH / LIS / faturação</td>
+        <td>“Fora da B; orçamentamos à parte depois da escala estar a correr.”</td>
+      </tr>
+      <tr>
+        <td>“Vamos pensar”</td>
+        <td>“Claro. Proposta válida 15 dias. Próximo passo concreto: enviarem o Excel + 1 semana real.”</td>
+      </tr>
+    </table>
+
+    <h2>7. Se disserem sim</h2>
+    <div class="grid2">
+      <div class="card">
+        <h3>Pedir já</h3>
+        <ul>
+          <li>Confirmação escrita: <strong>Opção B</strong></li>
+          <li>Alojamento: <strong>Anual</strong> (ou mensal)</li>
+          <li>Manutenção: Sim / Não</li>
+          <li>Excel + 1 semana real + lista staff</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Depois da reunião</h3>
+        <ul>
+          <li>Fatura 40% arranque</li>
+          <li>Kick-off e calendário 3–5 sem.</li>
+          <li>V1 → 40% · validação → 20%</li>
+          <li>Ajustes 1–2 semanas de uso</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>8. Ordem prática no tablet (minuto a minuto)</h2>
+    <ol>
+      <li>Abrir link Netlify · brilho alto · Dashboard 20 s</li>
+      <li>Escalas → Grelha → vermelho + add/remove + Exportar</li>
+      <li>Incompatibilidades → regra posto → Escala → bloqueio</li>
+      <li>Portal → folga → Férias → aprovar</li>
+      <li>Entregar PDF cliente · fechar com preço · pedir sim</li>
+    </ol>
+
+    <div class="box">
+      <strong>Postura:</strong> não peças desculpa pelo protótipo. Mostra controlo, regras e telemóvel.
+      O Excel é o inimigo; tu és a Opção B.
+    </div>
+
+    <div class="footer">
+      Mr Leo Tech · 927 078 955 · mrleo_tech@hotmail.com · Vila Meã, Amarante<br />
+      Guião interno · não entregar ao cliente · LeoSuite LabAmarante · 2 páginas
+    </div>
+  </div>
+
+</body>
+</html>

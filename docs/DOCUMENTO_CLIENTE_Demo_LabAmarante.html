@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <title>LeoSuite LabAmarante — Demonstração</title>
+  <style>
+    @page { size: A4; margin: 12mm 12mm; }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", Calibri, system-ui, sans-serif;
+      color: #0f172a;
+      line-height: 1.32;
+      font-size: 9.4pt;
+      margin: 0;
+    }
+    .head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 3px solid #0f766e;
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+    }
+    .head h1 {
+      font-size: 14.5pt;
+      color: #134e4a;
+      margin: 0 0 2px;
+      line-height: 1.15;
+    }
+    .brand { color: #0f766e; font-weight: 700; font-size: 8.5pt; letter-spacing: 0.03em; text-transform: uppercase; margin: 0 0 3px; }
+    .meta { color: #64748b; font-size: 8.2pt; margin: 0; }
+    .right { text-align: right; color: #334155; font-size: 8.5pt; min-width: 150px; }
+    .right strong { display: block; color: #0f766e; font-size: 10pt; }
+    h2 {
+      font-size: 10.5pt;
+      color: #0f766e;
+      margin: 9px 0 4px;
+      padding-bottom: 1px;
+      border-bottom: 1px solid #99f6e4;
+      page-break-after: avoid;
+    }
+    p { margin: 0 0 5px; }
+    ul { margin: 0 0 5px; padding-left: 15px; }
+    li { margin: 0 0 2px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 8.6pt;
+      margin: 4px 0 6px;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 4px 6px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #f0fdfa; color: #134e4a; }
+    .teal {
+      background: #f0fdfa;
+      border: 1px solid #99f6e4;
+      border-radius: 8px;
+      padding: 7px 9px;
+      margin: 6px 0;
+    }
+    .grid2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 4px 0 6px;
+    }
+    .card {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 7px 8px;
+      background: #f8fafc;
+    }
+    .card h3 {
+      margin: 0 0 3px;
+      font-size: 9.2pt;
+      color: #115e59;
+    }
+    .small { font-size: 8pt; color: #64748b; }
+    .footer {
+      margin-top: 8px;
+      padding-top: 5px;
+      border-top: 1px solid #e2e8f0;
+      font-size: 7.8pt;
+      color: #64748b;
+    }
+    .page2 { page-break-before: always; }
+  </style>
+</head>
+<body>
+
+  <!-- PÁGINA 1 -->
+  <div class="head">
+    <div>
+      <p class="brand">Mr Leo Tech · LeoSuite</p>
+      <h1>LabAmarante — Documento de demonstração</h1>
+      <p class="meta">Para LabAmarante, Lda · João Matias · Escala: Sandra Coelho · Agosto 2026</p>
+    </div>
+    <div class="right">
+      <strong>Opção B — Recomendada</strong>
+      Demonstração presencial<br />Valores sem IVA
+    </div>
+  </div>
+
+  <div class="teal">
+    <strong>Em resumo:</strong> o LeoSuite substitui o Excel na escala multi-local da LabAmarante
+    (≈11 postos, 10–15 colaboradores, 40 h/semana), com regras automáticas, portal no telemóvel
+    e exportação. Esta app é um <strong>protótipo da Opção B</strong> — mostra o funcionamento;
+    após aceite carregamos os vossos dados reais e a cloud de produção.
+  </div>
+
+  <h2>1. O problema e a solução</h2>
+  <p>
+    Hoje a escala é montada em Excel (~2 h/semana), com risco de falhas de cobertura e partilha
+    pouco prática com a equipa. O LeoSuite centraliza postos, colaboradores, turnos e regras
+    num sistema feito à medida da vossa rede de colheita.
+  </p>
+
+  <h2>2. O que a demonstração mostra</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>Escala</h3>
+      <ul>
+        <li>Grelha postos × dias (tipo Excel)</li>
+        <li>Turnos manhã / tarde / partido</li>
+        <li>Adicionar e remover colocações</li>
+        <li>Alertas de cobertura e meta 40 h</li>
+        <li>Exportar Excel (CSV) / imprimir PDF</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Regras</h3>
+      <ul>
+        <li>Competências / funções por posto</li>
+        <li>Incompatibilidade entre pessoas</li>
+        <li>Incompatibilidade pessoa ↔ local</li>
+        <li>Bloqueio automático na colocação</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Gestão do dia-a-dia</h3>
+      <ul>
+        <li>Postos e equipa (adicionar / apagar)</li>
+        <li>Férias, folgas, baixas e horas extra</li>
+        <li>Aprovar ou remover pedidos</li>
+        <li>Controlo na mão da Sandra</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Portal do colaborador</h3>
+      <ul>
+        <li>Consulta da escala no telemóvel</li>
+        <li>Pedidos de folga / férias e HE</li>
+        <li>Menos WhatsApp e folhas soltas</li>
+        <li>App instalável (PWA)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>3. Como ler o que vão ver hoje</h2>
+  <table>
+    <tr><th>Na demo</th><th>Significa</th></tr>
+    <tr><td>Postos com nomes da vossa rede</td><td>App alinhada com a operação real</td></tr>
+    <tr><td>Colaboradores de exemplo</td><td>Serão trocados pelos vossos dados após aceite</td></tr>
+    <tr><td>Bloqueios ao colocar pessoas</td><td>Regras da Opção B a evitar erros da escala</td></tr>
+    <tr><td>Portal + exportação</td><td>Equipa consulta; Excel continua disponível se precisarem</td></tr>
+  </table>
+  <p class="small">Isto ainda não é produção: falta a cloud definitiva e a carga da vossa folha Excel real.</p>
+
+  <!-- PÁGINA 2 -->
+  <div class="page2">
+    <div class="head">
+      <div>
+        <p class="brand">Mr Leo Tech · LeoSuite</p>
+        <h1>LabAmarante — Investimento e próximos passos</h1>
+        <p class="meta">Opção B · Documento de demonstração · Página 2/2</p>
+      </div>
+      <div class="right">
+        <strong>Prazo estimado: 3–5 semanas</strong>
+        Após aceite + dados
+      </div>
+    </div>
+
+    <h2>4. Investimento — Opção B</h2>
+    <table>
+      <tr><th>Rubrica</th><th>Valor s/ IVA</th><th>Notas</th></tr>
+      <tr>
+        <td><strong>Desenvolvimento (único)</strong></td>
+        <td><strong>2.890 €</strong></td>
+        <td>40% arranque · 40% entrega V1 · 20% validação (até 15 dias)</td>
+      </tr>
+      <tr>
+        <td><strong>Alojamento anual</strong> (recomendado)</td>
+        <td><strong>399 €/ano</strong></td>
+        <td>Cloud, multi-dispositivo, cópias de segurança</td>
+      </tr>
+      <tr>
+        <td>Alojamento mensal (alternativa)</td>
+        <td>39,90 €/mês</td>
+        <td>Em vez do plano anual</td>
+      </tr>
+      <tr>
+        <td>Manutenção / suporte (opcional)</td>
+        <td>49 €/mês</td>
+        <td>Correcções e pequenas melhorias</td>
+      </tr>
+    </table>
+    <p class="small">Valores líquidos; acresce IVA à taxa legal. Detalhe completo na proposta comercial.</p>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Incluído na Opção B</h3>
+        <ul>
+          <li>Escala multi-local + turnos</li>
+          <li>Competências e alertas 40 h / cobertura</li>
+          <li>Férias / folgas / horas extra</li>
+          <li>Portal móvel da equipa</li>
+          <li>Exportação Excel/PDF · PWA</li>
+          <li>Ajustes após 1–2 semanas de uso</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Fora desta opção</h3>
+        <ul>
+          <li>App nas lojas (App Store / Play)</li>
+          <li>Integrações RH</li>
+          <li>Transporte · BI avançado</li>
+          <li>Faturação, stock, LIS / resultados clínicos</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>5. Porque existe alojamento</h2>
+    <p>
+      O desenvolvimento constrói a ferramenta; o alojamento mantém a escala online, segura e
+      acessível em vários telemóveis/PCs ao mesmo tempo — com cópias de segurança. Sem alojamento,
+      a app não funciona em produção.
+    </p>
+
+    <h2>6. Próximos passos (se quiserem avançar)</h2>
+    <ol style="margin:0 0 6px;padding-left:16px">
+      <li>Confirmar por email/WhatsApp: <strong>Opção B</strong> + alojamento <strong>anual</strong> ou mensal.</li>
+      <li>Enviar lista de colaboradores + <strong>1 semana real do Excel</strong> + regras especiais.</li>
+      <li>Arranque com faturação dos <strong>40%</strong> iniciais.</li>
+      <li>Entrega da V1 (3–5 semanas) e restante pagamento conforme proposta.</li>
+      <li>Ajustes após 1–2 semanas de utilização real.</li>
+    </ol>
+
+    <div class="teal">
+      <strong>Decisão pedida hoje:</strong> validar se este fluxo de escala responde às necessidades
+      da LabAmarante e se pretendem avançar com a <strong>Opção B (2.890 € + 399 €/ano)</strong>.
+    </div>
+
+    <div class="footer">
+      Mr Leo Tech · 927 078 955 · mrleo_tech@hotmail.com · Vila Meã, Amarante<br />
+      Documento de apoio à demonstração · LeoSuite LabAmarante · Confidencial · 2 páginas
+    </div>
+  </div>
+
+</body>
+</html>

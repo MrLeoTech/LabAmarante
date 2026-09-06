@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <title>LeoSuite LabAmarante — Guião de apresentação</title>
+  <style>
+    @page { size: A4; margin: 18mm 16mm; }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      color: #0f172a;
+      line-height: 1.45;
+      font-size: 11pt;
+      margin: 0;
+    }
+    h1 { font-size: 20pt; color: #115e59; margin: 0 0 6px; }
+    h2 {
+      font-size: 13pt;
+      color: #0f766e;
+      border-bottom: 2px solid #99f6e4;
+      padding-bottom: 4px;
+      margin: 22px 0 10px;
+      page-break-after: avoid;
+    }
+    h3 { font-size: 11.5pt; margin: 14px 0 6px; color: #134e4a; page-break-after: avoid; }
+    p, li { margin: 0 0 6px; }
+    ul, ol { margin: 0 0 10px; padding-left: 18px; }
+    .meta { color: #475569; font-size: 10pt; margin-bottom: 14px; }
+    .box {
+      background: #f0fdfa;
+      border: 1px solid #99f6e4;
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin: 10px 0 14px;
+    }
+    .warn {
+      background: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin: 10px 0 14px;
+    }
+    .ok {
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin: 10px 0 14px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10pt;
+      margin: 8px 0 14px;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 6px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #f1f5f9; }
+    .quote {
+      font-style: italic;
+      color: #115e59;
+      border-left: 3px solid #14b8a6;
+      padding-left: 10px;
+      margin: 8px 0 12px;
+    }
+    .small { font-size: 9.5pt; color: #64748b; }
+    .page-break { page-break-before: always; }
+    .footer {
+      margin-top: 18px;
+      padding-top: 8px;
+      border-top: 1px solid #e2e8f0;
+      font-size: 9pt;
+      color: #64748b;
+    }
+    strong { color: #0f172a; }
+  </style>
+</head>
+<body>
+
+  <h1>LeoSuite · LabAmarante</h1>
+  <p class="meta">
+    Guião de apresentação e demonstração · Opção B — Recomendada<br />
+    Cliente: LabAmarante, Lda · Contactos: João Matias / Sandra Coelho<br />
+    Mr Leo Tech · Confidencial · Agosto 2026
+  </p>
+
+  <div class="box">
+    <strong>Objectivo da reunião:</strong> que o cliente veja a app a resolver o problema do Excel
+    (~2h/semana), confirme o âmbito da Opção B e aceite avançar (desenvolvimento + alojamento anual).
+  </div>
+
+  <h2>1. Pacote a apresentar (Opção B)</h2>
+  <table>
+    <tr><th>Rubrica</th><th>Valor s/ IVA</th><th>Notas</th></tr>
+    <tr><td>Desenvolvimento (único)</td><td><strong>2.890 €</strong></td><td>40% arranque · 40% V1 · 20% validação</td></tr>
+    <tr><td>Alojamento anual</td><td><strong>399 €/ano</strong></td><td>Alternativa: 39,90 €/mês</td></tr>
+    <tr><td>Manutenção opcional</td><td>49 €/mês</td><td>Não insistir; só se perguntarem</td></tr>
+    <tr><td>Prazo</td><td>3–5 semanas</td><td>Após dados reais + aceite</td></tr>
+  </table>
+  <p class="small">Inclui: escala multi-local, competências, alertas 40h/cobertura, férias/HE, portal móvel, exportação, PWA. Não inclui: app nas lojas, RH, BI, LIS.</p>
+
+  <h2>2. Antes da reunião (checklist)</h2>
+  <ol>
+    <li>No PC: <code>npm run build</code> e pasta <code>dist</code> actualizada.</li>
+    <li>Subir <code>dist</code> em <strong>app.netlify.com/drop</strong> → copiar o link.</li>
+    <li>Abrir o link no <strong>tablet Samsung ou iPhone</strong> e guardar nos favoritos.</li>
+    <li>Testar offline rápido: Escalas, Incompatibilidades, Portal, Exportar CSV.</li>
+    <li>Ter a proposta PDF e este guião à mão.</li>
+    <li>Se algo falhar: botão <strong>Reset demo</strong> no Dashboard.</li>
+  </ol>
+  <div class="warn">
+    <strong>Importante:</strong> os dados ficam no dispositivo. O que alteraste no PC não aparece no telemóvel.
+    Prepara a demo <em>no mesmo aparelho</em> com que vais apresentar.
+  </div>
+
+  <h2>3. Abertura (1–2 minutos)</h2>
+  <p>Começa pelo problema deles, não pela app:</p>
+  <div class="quote">
+    “Hoje a Sandra gasta cerca de 2 horas por semana no Excel a montar a escala de 11 locais.
+    O LeoSuite faz isso com regras: quem pode ir a que posto, quem não pode trabalhar junto,
+    e a equipa consulta no telemóvel — sem WhatsApp solto.”
+  </div>
+  <p>Depois posiciona o âmbito:</p>
+  <div class="quote">
+    “Isto é um protótipo da Opção B da proposta. Ainda não tem os vossos dados reais do Excel —
+    mas mostra exactamente o funcionamento que vamos entregar em 3 a 5 semanas.”
+  </div>
+
+  <h2>4. Guião da demonstração (~10–12 minutos)</h2>
+
+  <h3>Passo 1 — Dashboard (1 min)</h3>
+  <ul>
+    <li>Mostra postos, equipa, pedidos pendentes, alertas.</li>
+    <li>Frase: “Num ecrã vê o que hoje está espalhado por folhas e mensagens.”</li>
+  </ul>
+
+  <h3>Passo 2 — Escalas → Grelha (3 min) ★ WOW</h3>
+  <ul>
+    <li>Abre a <strong>grelha tipo Excel</strong> (postos × dias).</li>
+    <li>Aponta células <strong>vermelhas</strong> = falha de cobertura.</li>
+    <li>Frase: “No Excel estes buracos passam; aqui saltam à vista.”</li>
+    <li>Adiciona uma colocação e remove outra — “a Sandra tem a mão em tudo”.</li>
+    <li>Clica <strong>Exportar Excel (CSV)</strong> — “sai a folha em 1 segundo”.</li>
+  </ul>
+
+  <h3>Passo 3 — Bloqueios / regras (3 min) ★ WOW</h3>
+  <ul>
+    <li><strong>Incompatibilidades → pessoa ↔ pessoa:</strong> tenta Joana + Pedro no mesmo posto → bloqueio.</li>
+    <li><strong>pessoa ↔ posto:</strong> Ana ↛ Mondim (ou cria regra na hora) → na Escala bloqueia.</li>
+    <li>Menciona <strong>Competências</strong>: “funções que o posto exige” vs “não deve ir a este local”.</li>
+    <li>Frase: “O sistema impede o erro antes de a escala sair.”</li>
+  </ul>
+
+  <h3>Passo 4 — Controlo total (1–2 min)</h3>
+  <ul>
+    <li>Mostra rapidamente Adicionar/Apagar em Postos, Equipa, Férias ou Competências.</li>
+    <li>Frase: “Não ficam dependentes do informático para cada alteração.”</li>
+  </ul>
+
+  <h3>Passo 5 — Portal no telemóvel (2 min) ★ WOW</h3>
+  <ul>
+    <li>Abre <strong>Portal</strong> (idealmente no telemóvel partilhado ou no mesmo tablet).</li>
+    <li>Mostra escala do colaborador + pedir folga / HE.</li>
+    <li>Volta a Férias e aprova — “gestão valida; a equipa consulta.”</li>
+  </ul>
+
+  <h3>Passo 6 — Fecho comercial (1 min)</h3>
+  <div class="ok">
+    <div class="quote" style="border:0;padding:0;margin:0">
+      “Isto é a Opção B: 2.890 € de desenvolvimento + 399 €/ano de alojamento.
+      Em 3–5 semanas carregamos a vossa folha real e a Sandra deixa o Excel.
+      Querem avançar com o arranque?”
+    </div>
+  </div>
+
+  <div class="page-break"></div>
+
+  <h2>5. Frases úteis (copiar mentalmente)</h2>
+  <table>
+    <tr><th>Situação</th><th>Dizer</th></tr>
+    <tr>
+      <td>Parece “só uma app”</td>
+      <td>“É o vosso processo de escala, com regras e telemóvel — o Excel deixa de ser o sítio onde a informação vive.”</td>
+    </tr>
+    <tr>
+      <td>“Os dados não são os nossos”</td>
+      <td>“Exacto — é demo. No arranque carregamos 1 semana real do Excel e a lista de colaboradores.”</td>
+    </tr>
+    <tr>
+      <td>“E se precisarmos de mudar regras?”</td>
+      <td>“Adicionam e apagam postos, pessoas, competências e incompatibilidades sem nos chamar.”</td>
+    </tr>
+    <tr>
+      <td>“Porque há valor mensal/anual?”</td>
+      <td>“O desenvolvimento constrói a ferramenta; o alojamento é a cloud segura para toda a equipa aceder ao mesmo tempo.”</td>
+    </tr>
+    <tr>
+      <td>“É caro?”</td>
+      <td>“2h/semana × 52 ≈ 100h/ano da Sandra. A Opção B paga-se em poucas semanas de tempo recuperado — sem contar erros de cobertura.”</td>
+    </tr>
+  </table>
+
+  <h2>6. Objeções comuns</h2>
+  <ul>
+    <li><strong>“Queremos pensar”</strong> — “Claro. A proposta vale 15 dias. O próximo passo concreto é enviarem a folha Excel + 1 semana real para eu preparar a V1.”</li>
+    <li><strong>“Só queremos o essencial (A)”</strong> — “A dá para arrancar, mas sem portal da equipa nem férias/HE na app. O que mais dói hoje (WhatsApp + Excel) é o que a B resolve.”</li>
+    <li><strong>“E a C?”</strong> — “É mais completa (perfis, histórico, formação alargada). Se a B fechar bem, evoluímos depois — sem obrigar a C agora.”</li>
+    <li><strong>Pedir funcionalidades fora de âmbito</strong> (RH, faturação, resultados clínicos) — “Isso fica fora da B; posso orçamentar à parte depois da escala estar a correr.”</li>
+  </ul>
+
+  <h2>7. Como proceder na demo (ordem prática)</h2>
+  <ol>
+    <li>Abre o link Netlify no tablet (ecrã limpo, brilho alto).</li>
+    <li>Dashboard → 20 segundos de contexto.</li>
+    <li>Escalas → Grelha → vermelho + adicionar/remover + Exportar.</li>
+    <li>Incompatibilidades → cria ou usa regra pessoa↔posto → volta à Escala e força o bloqueio.</li>
+    <li>Portal → pedido de folga → Férias → aprovar.</li>
+    <li>Fecha com preço + prazo + pergunta de decisão.</li>
+    <li>Se disserem sim: pede Excel + confirmação escrita (email/WhatsApp) Opção B + alojamento anual.</li>
+  </ol>
+
+  <h2>8. Se aceitarem — próximos passos</h2>
+  <ol>
+    <li>Aceitação por email/WhatsApp: <strong>Opção B</strong> + <strong>alojamento Anual</strong> (± manutenção).</li>
+    <li>Receber: lista de colaboradores + 1 semana real do Excel + regras (incompatibilidades/postos).</li>
+    <li>Faturação arranque: <strong>40%</strong> (conforme proposta).</li>
+    <li>Kick-off e calendarização das 3–5 semanas.</li>
+    <li>Entrega V1 → 40% · validação 15 dias → 20%.</li>
+  </ol>
+
+  <div class="box">
+    <strong>Lembrete de postura:</strong> não peças desculpa pelo protótipo. Mostra controlo, regras e telemóvel.
+    O Excel deles é o inimigo; tu és a solução Opção B.
+  </div>
+
+  <div class="footer">
+    Mr Leo Tech · 927 078 955 · mrleo_tech@hotmail.com · Vila Meã, Amarante<br />
+    Documento interno de apoio à venda · LeoSuite LabAmarante · Opção B
+  </div>
+
+</body>
+</html>
