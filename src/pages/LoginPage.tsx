@@ -3,12 +3,7 @@ import { Navigate, useNavigate } from 'react-router-dom'
 import { BrandMark } from '@/components/BrandMark'
 import { BRAND } from '@/branding'
 import { LAB } from '@/data/lab'
-
-const AUTH_KEY = 'labamarante-auth'
-
-export function isAuthenticated() {
-  return sessionStorage.getItem(AUTH_KEY) === '1'
-}
+import { isAuthenticated, login } from '@/lib/auth'
 
 export default function LoginPage() {
   const navigate = useNavigate()
@@ -22,18 +17,16 @@ export default function LoginPage() {
 
   function onSubmit(e: FormEvent) {
     e.preventDefault()
-    // Demo: qualquer PIN com 4+ dígitos ou "demo"
-    if (pin.trim().length >= 4 || pin.trim().toLowerCase() === 'demo') {
-      sessionStorage.setItem(AUTH_KEY, '1')
-      navigate('/', { replace: true })
+    const result = login(user, pin)
+    if (!result.ok) {
+      setError(result.error)
       return
     }
-    setError('Use PIN de demonstração: demo ou qualquer código com 4 dígitos.')
+    navigate('/', { replace: true })
   }
 
   return (
     <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#0a0a0a] px-4 py-10 text-white">
-      {/* Acento dourado discreto */}
       <div
         aria-hidden
         className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-[#c9a227]/15 to-transparent"
@@ -68,16 +61,16 @@ export default function LoginPage() {
                 onChange={(e) => setUser(e.target.value)}
               >
                 <option value="sandra">Sandra Coelho (gestão)</option>
-                <option value="joao">João Matias (admin)</option>
-                <option value="demo">Demo / apresentação</option>
+                <option value="joao">João Matias (administração)</option>
               </select>
             </label>
             <label className="block text-sm">
-              <span className="mb-1 block text-xs text-white/50">PIN / palavra-passe</span>
+              <span className="mb-1 block text-xs text-white/50">PIN</span>
               <input
                 type="password"
+                inputMode="numeric"
                 autoComplete="current-password"
-                placeholder="demo ou PIN 4 dígitos"
+                placeholder="••••"
                 className="w-full rounded-xl border border-white/15 bg-black/40 px-3 py-2.5 text-sm text-white placeholder:text-white/30"
                 value={pin}
                 onChange={(e) => {
@@ -96,7 +89,7 @@ export default function LoginPage() {
           </form>
 
           <p className="mt-4 text-center text-[11px] text-white/40">
-            Demonstração · {BRAND.company} · {BRAND.tagline}
+            {BRAND.company} · {BRAND.tagline}
           </p>
         </div>
 

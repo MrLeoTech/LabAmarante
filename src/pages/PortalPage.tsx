@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { Badge, Card, PageHeader } from '@/components/ui'
+import { Badge, Card } from '@/components/ui'
 import { leaveTypeLabel, shiftLabel, type LeaveRequest } from '@/data/lab'
 import { useLabStore } from '@/store/LabStore'
 
@@ -30,26 +30,26 @@ export default function PortalPage() {
   const [heReason, setHeReason] = useState('')
 
   return (
-    <div>
-      <PageHeader
-        title="Portal do colaborador"
-        subtitle="Consulta e pedidos no telemóvel — dados guardados neste dispositivo"
-        action={
-          <select
-            className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
-            value={me}
-            onChange={(e) => setMe(e.target.value)}
-          >
-            {collaborators.map((s) => (
-              <option key={s.id} value={s.id}>
-                {s.name}
-              </option>
-            ))}
-          </select>
-        }
-      />
+    <div className="space-y-4">
+      <div className="flex items-center justify-between gap-2">
+        <div>
+          <h1 className="text-lg font-semibold text-slate-900">A tua área</h1>
+          <p className="text-xs text-slate-500">Escala, pedidos e horas extra</p>
+        </div>
+        <select
+          className="max-w-[160px] rounded-xl border border-slate-200 bg-white px-2.5 py-2 text-sm"
+          value={me}
+          onChange={(e) => setMe(e.target.value)}
+        >
+          {collaborators.map((s) => (
+            <option key={s.id} value={s.id}>
+              {s.name}
+            </option>
+          ))}
+        </select>
+      </div>
 
-      <div className="mx-auto max-w-md space-y-4">
+      <div className="space-y-4">
         <Card className="bg-brand-800 text-white">
           <div className="text-xs uppercase tracking-wide text-brand-100">Olá</div>
           <div className="mt-1 text-xl font-semibold">{staffName(me)}</div>

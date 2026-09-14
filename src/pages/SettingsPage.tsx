@@ -1,23 +1,36 @@
+import { useState } from 'react'
 import { Card, PageHeader, Badge } from '@/components/ui'
 import { BrandMark, BrandPoweredBy } from '@/components/BrandMark'
 import { BRAND } from '@/branding'
 import { LAB } from '@/data/lab'
 import { useNavigate } from 'react-router-dom'
+import { logoutSession } from '@/lib/auth'
+import { useLabStore } from '@/store/LabStore'
 
 export default function SettingsPage() {
   const navigate = useNavigate()
+  const { resetDemoData } = useLabStore()
+  const [resetMsg, setResetMsg] = useState<string | null>(null)
 
   function logout() {
-    sessionStorage.removeItem('labamarante-auth')
+    logoutSession()
     navigate('/login', { replace: true })
+  }
+
+  function handleReset() {
+    const ok = window.confirm(
+      'Repor todos os dados de demonstração?\n\nEscalas, pedidos e alterações feitas nesta sessão serão perdidos.',
+    )
+    if (!ok) return
+    resetDemoData()
+    setResetMsg('Dados de demonstração repostos.')
   }
 
   return (
     <div>
       <PageHeader
         title="Definições"
-        subtitle="Conta, branding e informações do fornecedor"
-        action={<Badge tone="brand">Demo</Badge>}
+        subtitle="Conta, branding e manutenção da sessão"
       />
 
       <div className="grid gap-4 lg:grid-cols-2">
@@ -29,16 +42,12 @@ export default function SettingsPage() {
               <dd className="font-medium">{LAB.legal}</dd>
             </div>
             <div className="flex justify-between gap-3">
-              <dt className="text-slate-500">Plano</dt>
-              <dd className="font-medium">{LAB.planLabel}</dd>
-            </div>
-            <div className="flex justify-between gap-3">
               <dt className="text-slate-500">Gestão da escala</dt>
               <dd className="font-medium">{LAB.scheduler}</dd>
             </div>
             <div className="flex justify-between gap-3">
-              <dt className="text-slate-500">Alojamento</dt>
-              <dd className="font-medium">{LAB.hostingChosen}</dd>
+              <dt className="text-slate-500">Contacto</dt>
+              <dd className="font-medium">{LAB.phone}</dd>
             </div>
           </dl>
         </Card>
@@ -66,18 +75,24 @@ export default function SettingsPage() {
               </dd>
             </div>
           </dl>
-          <p className="mt-3 text-xs text-slate-500">{BRAND.services}</p>
         </Card>
 
         <Card className="lg:col-span-2">
-          <div className="mb-2 text-sm font-semibold text-slate-800">Sessão de demonstração</div>
+          <div className="mb-2 flex items-center gap-2 text-sm font-semibold text-slate-800">
+            Manutenção da sessão
+            <Badge tone="neutral">Avançado</Badge>
+          </div>
           <p className="mb-3 text-sm text-slate-600">
-            Esta instalação é um protótipo da Opção B para apresentação. Os dados ficam neste
-            dispositivo (localStorage). Em produção, o alojamento cloud {BRAND.product} mantém a
-            escala partilhada pela equipa.
+            Use apenas se precisar de recomeçar a demonstração do zero neste dispositivo.
           </p>
-          <div className="flex flex-wrap items-center justify-between gap-3">
-            <BrandPoweredBy />
+          <div className="flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              onClick={handleReset}
+              className="rounded-xl border border-rose-200 bg-rose-50 px-3 py-2 text-sm font-medium text-rose-800 hover:bg-rose-100"
+            >
+              Repor dados de demonstração
+            </button>
             <button
               type="button"
               onClick={logout}
@@ -85,7 +100,9 @@ export default function SettingsPage() {
             >
               Terminar sessão
             </button>
+            <BrandPoweredBy />
           </div>
+          {resetMsg ? <p className="mt-3 text-sm text-emerald-700">{resetMsg}</p> : null}
         </Card>
       </div>
     </div>

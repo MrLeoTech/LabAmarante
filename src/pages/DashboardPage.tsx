@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom'
 import { AlertTriangle, MapPin, CalendarDays, Clock } from 'lucide-react'
 import { Badge, Card, Metric, PageHeader } from '@/components/ui'
-import { BrandMark, BrandPoweredBy } from '@/components/BrandMark'
-import { BRAND } from '@/branding'
 import { LAB, weeklyHoursByStaff, coverageAlerts, shiftLabel } from '@/data/lab'
 import { useLabStore } from '@/store/LabStore'
 
@@ -17,7 +15,6 @@ export default function DashboardPage() {
     staff,
     staffName,
     stationName,
-    resetDemoData,
   } = useLabStore()
   const today = new Date().toISOString().slice(0, 10)
   const todayWork = assignments.filter((a) => a.date === today && a.status === 'work')
@@ -33,33 +30,22 @@ export default function DashboardPage() {
     <div>
       <PageHeader
         title="Dashboard operacional"
-        subtitle={`${LAB.name} · ${LAB.planLabel} · escala multi-local para ${LAB.scheduler}`}
-        action={
-          <div className="flex items-center gap-2">
-            <span className="hidden items-center gap-1.5 rounded-full border border-[#c9a227]/35 bg-[#c9a227]/10 px-2 py-0.5 text-[10px] font-medium text-[#8a7318] sm:inline-flex">
-              <BrandMark variant="mark" className="h-4 w-4 rounded" />
-              Demo {BRAND.product}
-            </span>
-            <Badge tone="brand">{LAB.planLabel}</Badge>
-            <button
-              type="button"
-              onClick={resetDemoData}
-              className="rounded-lg border border-slate-200 bg-white px-2.5 py-1 text-xs text-slate-600"
-            >
-              Reset demo
-            </button>
-          </div>
-        }
+        subtitle={`Escala multi-local · rede ${LAB.name}`}
+        action={<Badge tone="brand">Operação</Badge>}
       />
 
       <div className="mb-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-        <Metric label="Locais" value={stations.length} hint="11 postos / rede" />
+        <Metric label="Locais" value={stations.length} hint="Rede de colheita" />
         <Metric
           label="Colaboradores"
           value={staff.filter((s) => s.active && s.role === 'colaborador').length}
-          hint="Meta 10–15 na proposta"
+          hint="Equipa activa"
         />
-        <Metric label="Colocações hoje" value={todayWork.length} hint={`${coveredStations} postos cobertos`} />
+        <Metric
+          label="Colocações hoje"
+          value={todayWork.length}
+          hint={`${coveredStations} postos cobertos`}
+        />
         <Metric
           label="Pedidos pendentes"
           value={pendingLeave + pendingHe}
@@ -74,9 +60,7 @@ export default function DashboardPage() {
             Escala de hoje
           </div>
           {todayWork.length === 0 ? (
-            <p className="text-sm text-slate-500">
-              Sem colocações mock para hoje (domingo ou fora da semana gerada).
-            </p>
+            <p className="text-sm text-slate-500">Sem colocações para hoje.</p>
           ) : (
             <ul className="space-y-2">
               {todayWork.slice(0, 8).map((a) => (
@@ -93,7 +77,10 @@ export default function DashboardPage() {
               ))}
             </ul>
           )}
-          <Link to="/escalas" className="mt-3 inline-block text-sm font-medium text-brand-700 hover:underline">
+          <Link
+            to="/escalas"
+            className="mt-3 inline-block text-sm font-medium text-brand-700 hover:underline"
+          >
             Ver escalas →
           </Link>
         </Card>
@@ -104,7 +91,7 @@ export default function DashboardPage() {
             Alertas 40h / semana
           </div>
           {over40.length === 0 && under40.length === 0 ? (
-            <p className="text-sm text-slate-500">Sem desvios relevantes nesta semana mock.</p>
+            <p className="text-sm text-slate-500">Sem desvios relevantes nesta semana.</p>
           ) : (
             <ul className="space-y-2 text-sm">
               {over40.map(([id, h]) => (
@@ -123,7 +110,9 @@ export default function DashboardPage() {
           )}
           {coverage.length > 0 ? (
             <div className="mt-4 space-y-2">
-              <div className="text-xs font-medium uppercase tracking-wide text-slate-500">Cobertura</div>
+              <div className="text-xs font-medium uppercase tracking-wide text-slate-500">
+                Cobertura
+              </div>
               {coverage.map((c) => (
                 <div
                   key={`${c.date}-${c.stationId}`}
@@ -143,7 +132,10 @@ export default function DashboardPage() {
           </div>
           <ul className="space-y-2">
             {incompatibilities.slice(0, 3).map((i) => (
-              <li key={i.id} className="rounded-xl border border-amber-100 bg-amber-50/60 px-3 py-2 text-sm">
+              <li
+                key={i.id}
+                className="rounded-xl border border-amber-100 bg-amber-50/60 px-3 py-2 text-sm"
+              >
                 <div className="font-medium text-amber-950">
                   {staffName(i.a)} ↔ {staffName(i.b)}
                 </div>
@@ -151,7 +143,10 @@ export default function DashboardPage() {
               </li>
             ))}
             {stationBlocks.slice(0, 3).map((b) => (
-              <li key={b.id} className="rounded-xl border border-rose-100 bg-rose-50/70 px-3 py-2 text-sm">
+              <li
+                key={b.id}
+                className="rounded-xl border border-rose-100 bg-rose-50/70 px-3 py-2 text-sm"
+              >
                 <div className="font-medium text-rose-950">
                   {staffName(b.staffId)} ↛ {stationName(b.stationId)}
                 </div>
@@ -170,41 +165,25 @@ export default function DashboardPage() {
         <Card>
           <div className="mb-3 flex items-center gap-2 font-semibold">
             <MapPin className="h-4 w-4 text-brand-700" />
-            Pacote aceite (simulado)
+            Rede de postos
           </div>
-          <p className="text-sm text-slate-600">
-            Desenvolvimento <strong>{LAB.setup}</strong> · {LAB.hostingLabel}{' '}
-            <strong>{LAB.hostingChosen}</strong>
-            {LAB.maintenanceChosen ? ` · manutenção ${LAB.maintenanceOptional}` : ' · sem manutenção opcional'}.
-          </p>
-          <p className="mt-2 text-sm text-slate-500">
-            PWA instalável + persistência local neste dispositivo (pré-cloud do alojamento anual).
-          </p>
-        </Card>
-
-        <Card className="border-brand-200 bg-brand-50/50 lg:col-span-2">
-          <div className="flex flex-wrap items-start justify-between gap-3">
-            <div>
-              <div className="font-semibold text-brand-900">Guião WOW (1 minuto)</div>
-              <ol className="mt-2 list-decimal space-y-1 pl-5 text-sm text-brand-950/90">
-                <li>
-                  Em qualquer ecrã: <strong>Adicionar</strong> e <strong>Apagar</strong> (postos,
-                  equipa, regras, férias) — “vocês têm a mão em tudo”.
+          <ul className="space-y-1.5 text-sm text-slate-600">
+            {stations
+              .filter((s) => s.id !== 'mobile')
+              .slice(0, 6)
+              .map((s) => (
+                <li key={s.id} className="flex justify-between gap-2">
+                  <span className="font-medium text-slate-800">{s.name}</span>
+                  <span className="text-slate-400">{s.city}</span>
                 </li>
-                <li>
-                  <strong>Escalas → Grelha</strong>: vermelho = falha de cobertura; Joana + Pedro =
-                  bloqueio.
-                </li>
-                <li>
-                  <strong>Exportar Excel</strong> + <strong>Portal</strong> no telemóvel.
-                </li>
-              </ol>
-            </div>
-            <div className="rounded-xl border border-[#c9a227]/30 bg-slate-50 p-2">
-              <BrandMark variant="full" className="h-16 max-w-[140px] bg-transparent" />
-            </div>
-          </div>
-          <BrandPoweredBy className="mt-3" />
+              ))}
+          </ul>
+          <Link
+            to="/postos"
+            className="mt-3 inline-block text-sm font-medium text-brand-700 hover:underline"
+          >
+            Ver todos os postos →
+          </Link>
         </Card>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom'
-import { isAuthenticated } from '@/pages/LoginPage'
+import { isAuthenticated } from '@/lib/auth'
 
 export function RequireAuth() {
   const location = useLocation()
