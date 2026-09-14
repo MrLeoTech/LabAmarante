@@ -43,6 +43,22 @@ textarea {
 }
 
 @media print {
+  @page {
+    size: A4 landscape;
+    margin: 8mm;
+  }
+
+  html,
+  body,
+  #root {
+    min-height: 0 !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: white !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
   header,
   nav,
   aside,
@@ -51,12 +67,40 @@ textarea {
     display: none !important;
   }
 
-  body {
-    background: white !important;
+  main,
+  .print-root {
+    max-width: none !important;
+    width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: visible !important;
   }
 
-  main {
-    max-width: none !important;
+  /* Grelha de escalas: caber na página sem scroll cortado */
+  .print-schedule {
+    overflow: visible !important;
+    border: none !important;
+    box-shadow: none !important;
     padding: 0 !important;
+  }
+
+  .print-schedule table {
+    width: 100% !important;
+    min-width: 0 !important;
+    table-layout: fixed !important;
+    font-size: 8pt !important;
+  }
+
+  .print-schedule th,
+  .print-schedule td {
+    position: static !important;
+    left: auto !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    padding: 3px 4px !important;
+  }
+
+  .print-schedule .sticky {
+    position: static !important;
   }
 }

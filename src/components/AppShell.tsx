@@ -69,7 +69,7 @@ export function AppShell() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 lg:flex">
-      <aside className="flex w-full flex-col border-b border-brand-900/30 bg-brand-900 text-white lg:sticky lg:top-0 lg:h-screen lg:w-60 lg:shrink-0 lg:border-b-0 lg:border-r">
+      <aside className="flex w-full flex-col border-b border-brand-900/30 bg-brand-900 text-white print:hidden lg:sticky lg:top-0 lg:h-screen lg:w-60 lg:shrink-0 lg:border-b-0 lg:border-r">
         <div className="flex items-center gap-3 border-b border-white/10 px-4 py-4">
           <div className="overflow-hidden rounded-xl border border-[#c9a227]/35 bg-white/10 p-0.5 shadow-sm">
             <BrandMark variant="mark" className="h-10 w-10 bg-transparent" />
@@ -136,8 +136,8 @@ export function AppShell() {
         </div>
       </aside>
 
-      <div className="flex min-w-0 flex-1 flex-col">
-        <header className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-slate-200 bg-white/95 px-4 py-3 backdrop-blur">
+      <div className="flex min-w-0 flex-1 flex-col print:block print:w-full">
+        <header className="sticky top-0 z-10 flex items-center justify-between gap-3 border-b border-slate-200 bg-white/95 px-4 py-3 backdrop-blur print:hidden">
           <div>
             <div className="text-sm font-semibold text-slate-900">
               {session?.name ?? LAB.scheduler}
@@ -152,7 +152,7 @@ export function AppShell() {
           </div>
           <BrandMark variant="mark" className="h-8 w-8 rounded-lg border border-slate-200" />
         </header>
-        <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6">
+        <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6 print:max-w-none print:p-0">
           <Outlet />
         </main>
         <footer className="border-t border-slate-200 bg-white px-4 py-3 print:hidden">

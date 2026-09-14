@@ -72,39 +72,41 @@ export default function SchedulesPage() {
   }
 
   return (
-    <div>
-      <PageHeader
-        title="Escalas"
-        subtitle="Grelha tipo Excel · adicionar/remover colocações · exportação"
-        action={
-          <div className="flex flex-wrap gap-2 print:hidden">
-            <button
-              type="button"
-              onClick={() => exportAssignmentsCsv(assignments, staffName, stationName)}
-              className="rounded-xl bg-brand-700 px-3 py-2 text-sm font-medium text-white"
-            >
-              Exportar Excel (CSV)
-            </button>
-            <button
-              type="button"
-              onClick={() => window.print()}
-              className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
-            >
-              PDF / Imprimir
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                regenerateWeek()
-                setMessage({ tone: 'ok', text: 'Semana regenerada com a equipa/postos actuais.' })
-              }}
-              className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
-            >
-              Regenerar
-            </button>
-          </div>
-        }
-      />
+    <div className="print-root">
+      <div className="print:hidden">
+        <PageHeader
+          title="Escalas"
+          subtitle="Grelha tipo Excel · adicionar/remover colocações · exportação"
+          action={
+            <div className="flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => exportAssignmentsCsv(assignments, staffName, stationName)}
+                className="rounded-xl bg-brand-700 px-3 py-2 text-sm font-medium text-white"
+              >
+                Exportar Excel (CSV)
+              </button>
+              <button
+                type="button"
+                onClick={() => window.print()}
+                className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
+              >
+                PDF / Imprimir
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  regenerateWeek()
+                  setMessage({ tone: 'ok', text: 'Semana regenerada com a equipa/postos actuais.' })
+                }}
+                className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm"
+              >
+                Regenerar
+              </button>
+            </div>
+          }
+        />
+      </div>
 
       <div className="mb-4 flex flex-wrap gap-2 print:hidden">
         <button
@@ -285,19 +287,21 @@ export default function SchedulesPage() {
       </Card>
 
       {view === 'grid' ? (
-        <Card className="overflow-x-auto print:border-0 print:shadow-none">
+        <Card className="print-schedule overflow-x-auto print:overflow-visible print:border-0 print:p-0 print:shadow-none">
           <div className="mb-3 hidden print:block">
             <div className="text-lg font-bold">LeoSuite · Escala LabAmarante</div>
             <div className="text-sm text-slate-600">
-              Semana {dates[0]} → {dates[dates.length - 1]} · {LAB.planLabel}
+              Semana {dates[0]} → {dates[dates.length - 1]} · grelha multi-posto
             </div>
           </div>
-          <table className="w-full min-w-[900px] border-collapse text-left text-xs sm:text-sm">
+          <table className="w-full min-w-[900px] border-collapse text-left text-xs print:min-w-0 sm:text-sm">
             <thead>
               <tr className="bg-slate-100">
-                <th className="sticky left-0 z-10 bg-slate-100 p-2 font-semibold">Posto</th>
+                <th className="sticky left-0 z-10 bg-slate-100 p-2 font-semibold print:static">
+                  Posto
+                </th>
                 {dates.map((d) => (
-                  <th key={d} className="p-2 font-semibold whitespace-nowrap">
+                  <th key={d} className="p-2 font-semibold whitespace-nowrap print:whitespace-normal">
                     {weekdayLabel(d)}
                   </th>
                 ))}
@@ -308,7 +312,7 @@ export default function SchedulesPage() {
                 .filter((s) => stationFilter === 'all' || s.id === stationFilter)
                 .map((st) => (
                   <tr key={st.id} className="border-t border-slate-200">
-                    <td className="sticky left-0 z-10 bg-white p-2 font-medium whitespace-nowrap">
+                    <td className="sticky left-0 z-10 bg-white p-2 font-medium whitespace-nowrap print:static print:whitespace-normal">
                       {st.name}
                     </td>
                     {dates.map((d) => {
